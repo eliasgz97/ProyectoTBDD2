@@ -36,10 +36,10 @@ public class PersonaConexion {
 
     public void crearPersona() {
         MongoClient mongoClient = MongoClients.create(
-                "mongodb+srv://dfg:dfg@proyectoteoria2020.ejy3z.mongodb.net/test?retryWrites=true&w=majority");
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
         try {
-            MongoCollection<org.bson.Document> collection = database.getCollection("Personas");
+            MongoCollection<org.bson.Document> collection = database.getCollection("Persona");
             collection.insertOne(persona.toDocument());
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,10 +52,10 @@ public class PersonaConexion {
         modelo.setNumRows(0);
         ArrayList<String> persona = new ArrayList();
         MongoClient mongoClient = MongoClients.create(
-                "mongodb+srv://dfg:dfg@proyectoteoria2020.ejy3z.mongodb.net/test?retryWrites=true&w=majority");
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
         try {
-            MongoCollection<org.bson.Document> collection = database.getCollection("Personas");
+            MongoCollection<org.bson.Document> collection = database.getCollection("Persona");
             MongoCursor<org.bson.Document> cursor = collection.find().iterator();
             while (cursor.hasNext()) {
                 String principal = "";
@@ -88,11 +88,11 @@ public class PersonaConexion {
 
     public Document obtenerPersona(Persona persona) {
         MongoClient mongoClient = MongoClients.create(
-                "mongodb+srv://df:dfg@proyectoteoria2020.ejy3z.mongodb.net/test?retryWrites=true&w=majority");
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
         Document r = new Document();
         try {
-            MongoCollection<org.bson.Document> collection = database.getCollection("Personas");
+            MongoCollection<org.bson.Document> collection = database.getCollection("Persona");
             Document d = persona.toDocumentName();
             FindIterable<Document> result = collection.find(d);
             r = result.first();
@@ -108,10 +108,10 @@ public class PersonaConexion {
 
     public void reemplazarPersona(Document viejo, Document nuevo) {
         MongoClient mongoClient = MongoClients.create(
-                "mongodb+srv://df:df@proyectoteoria2020.ejy3z.mongodb.net/test?retryWrites=true&w=majority");
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
         try {
-            MongoCollection<org.bson.Document> collection = database.getCollection("Personas");
+            MongoCollection<org.bson.Document> collection = database.getCollection("Persona");
             collection.replaceOne(viejo, nuevo);
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,10 +120,10 @@ public class PersonaConexion {
 
     public void eliminarFarmacia(Document viejo) {
         MongoClient mongoClient = MongoClients.create(
-                "mongodb+srv://yt:db@proyectoteoria2020.ejy3z.mongodb.net/test?retryWrites=true&w=majority");
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
         try {
-            MongoCollection<org.bson.Document> collection = database.getCollection("Personas");
+            MongoCollection<org.bson.Document> collection = database.getCollection("Persona");
             collection.deleteOne(viejo);
         } catch (Exception e) {
             e.printStackTrace();

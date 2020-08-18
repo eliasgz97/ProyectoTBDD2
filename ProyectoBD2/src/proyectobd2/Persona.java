@@ -20,6 +20,10 @@ public class Persona {
         this.nombre = nombre;
     }
 
+    Persona() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getId() {
         return id;
     }
@@ -43,15 +47,15 @@ public class Persona {
 
     public Document toDocument() {
         Document d = new Document();
-        d.append("ID Persona", this.id)
-                .append("Nombre", this.nombre);
+        d.append("IdP", this.id)
+                .append("NombreP", this.nombre);
 
         return d;
     }
 
     public Document toDocumentName() {
         Document d = new Document();
-        d.append("ID Persona", this.id);
+        d.append("IdP", this.id);
         return d;
     }
 }
