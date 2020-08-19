@@ -10,6 +10,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
 /**
@@ -27,6 +29,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     ArrayList<Producto> productos = new ArrayList();
     ArrayList<Persona> farmaceuticos = new ArrayList();
     ArrayList<Persona> propietarios = new ArrayList();
+    Document consulta;
     
     /**
      * Creates new form ProyectoBD2
@@ -101,7 +104,19 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jtxt_modificardireccionfarmacia = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jb_modificarfarmacia = new javax.swing.JButton();
-        jcb_modificaridfarmacia = new javax.swing.JComboBox<>();
+        jcb_idfarmacia = new javax.swing.JComboBox<>();
+        jd_modificarproducto = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_productos = new javax.swing.JTable();
+        jb_modificarproducto = new javax.swing.JButton();
+        jd_modificarproductoventana = new javax.swing.JDialog();
+        tf_modificaridproducto = new javax.swing.JTextField();
+        tf_modificarnombreproducto = new javax.swing.JTextField();
+        tf_modificartipoproducto = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jb_modfinalproducto = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jb_crear = new javax.swing.JButton();
         jb_modificar = new javax.swing.JButton();
@@ -598,59 +613,149 @@ public class ProyectoBD2 extends javax.swing.JFrame {
             }
         });
 
-        jcb_modificaridfarmacia.setModel(new DefaultComboBoxModel());
+        jcb_idfarmacia.setModel(new DefaultComboBoxModel());
 
         javax.swing.GroupLayout jd_ModificarFarmaciasLayout = new javax.swing.GroupLayout(jd_ModificarFarmacias.getContentPane());
         jd_ModificarFarmacias.getContentPane().setLayout(jd_ModificarFarmaciasLayout);
         jd_ModificarFarmaciasLayout.setHorizontalGroup(
             jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jb_modificarfarmacia)
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtxt_modificardireccionfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ModificarFarmaciasLayout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jcb_modificaridfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
-                            .addGap(67, 67, 67)
-                            .addComponent(jtxt_modificarnombrefarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
-                    .addGap(115, 115, 115)
-                    .addComponent(jLabel12)
-                    .addContainerGap(232, Short.MAX_VALUE)))
+                        .addGap(152, 152, 152)
+                        .addComponent(jb_modificarfarmacia))
+                    .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ModificarFarmaciasLayout.createSequentialGroup()
+                                    .addComponent(jLabel12)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jtxt_modificarnombrefarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ModificarFarmaciasLayout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jtxt_modificardireccionfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_ModificarFarmaciasLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(jcb_idfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jd_ModificarFarmaciasLayout.setVerticalGroup(
             jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ModificarFarmaciasLayout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcb_modificaridfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jcb_idfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addComponent(jtxt_modificarnombrefarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxt_modificarnombrefarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addGap(28, 28, 28)
                 .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxt_modificardireccionfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jb_modificarfarmacia)
                 .addGap(71, 71, 71))
-            .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jd_ModificarFarmaciasLayout.createSequentialGroup()
-                    .addGap(137, 137, 137)
-                    .addComponent(jLabel12)
-                    .addContainerGap(194, Short.MAX_VALUE)))
+        );
+
+        jt_productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id", "IdProducto", "NombreProducto", "Tipo"
+            }
+        ));
+        jScrollPane2.setViewportView(jt_productos);
+
+        jb_modificarproducto.setText("Modificar");
+        jb_modificarproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_modificarproductoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_modificarproductoLayout = new javax.swing.GroupLayout(jd_modificarproducto.getContentPane());
+        jd_modificarproducto.getContentPane().setLayout(jd_modificarproductoLayout);
+        jd_modificarproductoLayout.setHorizontalGroup(
+            jd_modificarproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarproductoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addComponent(jb_modificarproducto)
+                .addGap(111, 111, 111))
+        );
+        jd_modificarproductoLayout.setVerticalGroup(
+            jd_modificarproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarproductoLayout.createSequentialGroup()
+                .addGroup(jd_modificarproductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modificarproductoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_modificarproductoLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jb_modificarproducto)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jLabel14.setText("Id");
+
+        jLabel15.setText("Nombre");
+
+        jLabel16.setText("Tipo");
+
+        jb_modfinalproducto.setText("Guardar");
+        jb_modfinalproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_modfinalproductoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_modificarproductoventanaLayout = new javax.swing.GroupLayout(jd_modificarproductoventana.getContentPane());
+        jd_modificarproductoventana.getContentPane().setLayout(jd_modificarproductoventanaLayout);
+        jd_modificarproductoventanaLayout.setHorizontalGroup(
+            jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarproductoventanaLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16))
+                .addGap(28, 28, 28)
+                .addGroup(jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tf_modificaridproducto)
+                    .addComponent(tf_modificarnombreproducto)
+                    .addComponent(tf_modificartipoproducto, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificarproductoventanaLayout.createSequentialGroup()
+                .addContainerGap(261, Short.MAX_VALUE)
+                .addComponent(jb_modfinalproducto)
+                .addGap(68, 68, 68))
+        );
+        jd_modificarproductoventanaLayout.setVerticalGroup(
+            jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarproductoventanaLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_modificarproductoventanaLayout.createSequentialGroup()
+                        .addGroup(jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tf_modificaridproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addGap(35, 35, 35)
+                        .addComponent(tf_modificarnombreproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel15))
+                .addGap(38, 38, 38)
+                .addGroup(jd_modificarproductoventanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tf_modificartipoproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGap(38, 38, 38)
+                .addComponent(jb_modfinalproducto)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -844,15 +949,20 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearlab1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        personaconexion.obtenerProductos(jt_productos);
+        jd_modificarproducto.pack();
+        jd_modificarproducto.setModal(true);
+        jd_modificarproducto.setLocationRelativeTo(this);
+        jd_modificarproducto.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jb_crearfarmacia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearfarmacia1ActionPerformed
-        personaconexion.updatecb_farmacias(jcb_modificaridfarmacia);
-        jd_ModificarPersonas.pack();
-        jd_ModificarPersonas.setModal(true);
-        jd_ModificarPersonas.setLocationRelativeTo(this);
-        jd_ModificarPersonas.setVisible(true);
+        personaconexion.updatecb_farmacias(jcb_idfarmacia);
+        jd_ModificarFarmacias.pack();
+        jd_ModificarFarmacias.setModal(true);
+        jd_ModificarFarmacias.setLocationRelativeTo(this);
+        jd_ModificarFarmacias.setVisible(true);
     }//GEN-LAST:event_jb_crearfarmacia1ActionPerformed
 
     private void jb_modificarpersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarpersonaActionPerformed
@@ -865,20 +975,71 @@ public class ProyectoBD2 extends javax.swing.JFrame {
 
     private void jtxt_modificarnombrefarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_modificarnombrefarmaciaActionPerformed
         Document d = new Document();
-        d = personaconexion.obtenerFarmacia(new Farmacia(jcb_modificaridfarmacia.getSelectedItem().toString(), jtxt_modificarnombrePersona.getText(), jtxt_modificardireccionfarmacia.getText()));
-        Farmacia nuevo = new Farmacia(jcb_modificaridfarmacia.getSelectedItem().toString(), jtxt_modificarnombrePersona.getText(), jtxt_modificardireccionfarmacia.getText());
+        d = personaconexion.obtenerFarmacia(new Farmacia(jcb_idfarmacia.getSelectedItem().toString(), jtxt_modificarnombrePersona.getText(), jtxt_modificardireccionfarmacia.getText()));
+        Farmacia nuevo = new Farmacia(jcb_idfarmacia.getSelectedItem().toString(), jtxt_modificarnombrePersona.getText(), jtxt_modificardireccionfarmacia.getText());
         Document d2 = nuevo.toDocument();
         personaconexion.reemplazarPersona(d, d2);
     }//GEN-LAST:event_jtxt_modificarnombrefarmaciaActionPerformed
 
     private void jb_modificarfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarfarmaciaActionPerformed
         Document d = new Document();
-        /*d = personaconexion.obtenerFarmacia(new Farmacia(jcb_idPersona.getSelectedItem().toString(), " "));
-        Persona nuevo = new Persona (jcb_idPersona.getSelectedItem().toString(), jtxt_modificarnombrePersona.getText());
+        d = personaconexion.obtenerFarmacia(new Farmacia(jcb_idfarmacia.getSelectedItem().toString(), " "," "));
+        Farmacia nuevo = new Farmacia (jcb_idfarmacia.getSelectedItem().toString(), jtxt_modificarnombrefarmacia.getText(),jtxt_modificardireccionfarmacia.getText());
         Document d2 = nuevo.toDocument();    
-        personaconexion.reemplazarPersona(d, d2);
-         */
+        personaconexion.reemplazarFarmacia(d, d2);
+        
     }//GEN-LAST:event_jb_modificarfarmaciaActionPerformed
+
+    private void jb_modificarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarproductoActionPerformed
+       consulta=new Document();
+        if (jt_productos.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la tabla para poder modificar");
+        } else {
+            DefaultTableModel modelo = (DefaultTableModel) jt_productos.getModel();
+            String id = (String) modelo.getValueAt(jt_productos.getSelectedRow(), 1);
+            Producto pr = new Producto(id);
+            consulta = personaconexion.obtenerProducto(pr);
+            ArrayList<String> empresita = new ArrayList();
+            String principal="";
+            String[] p;
+           principal = consulta.toString();
+            p = principal.split(",");
+            for (int i = 0; i < p.length; i++) {
+                String f[] = p[i].split("=");
+                empresita.add(f[1]);
+            }
+            String nom = "";
+            for (int i = 0; i < empresita.get(2).length(); i++) {
+                if (empresita.get(2).charAt(i) != '}') {
+                    nom += empresita.get(2).charAt(i);
+                }
+            }
+            tf_modificarnombreproducto.setText(nom);
+            tf_modificaridproducto.setText(empresita.get(1));
+
+            jd_modificarproductoventana.setModal(true);
+            jd_modificarproductoventana.pack();
+            jd_modificarproductoventana.setLocationRelativeTo(this);
+            jd_modificarproductoventana.setVisible(true);
+        }
+
+    }//GEN-LAST:event_jb_modificarproductoActionPerformed
+
+    private void jb_modfinalproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modfinalproductoActionPerformed
+       String id, nombre,tipo;
+        id = tf_modificaridproducto.getText();
+        tf_modificaridproducto.setText("");
+        nombre = tf_modificarnombreproducto.getText();
+        tf_modificarnombreproducto.setText("");
+        tipo = tf_modificartipoproducto.getText();
+        tf_modificartipoproducto.setText("");
+        Producto pr = new Producto(id,nombre,tipo);
+        PersonaConexion pc = new PersonaConexion();
+        pc.reemplazarProducto(consulta, pr.toDocument());
+        pc.obtenerProductos(jt_productos);
+        JOptionPane.showMessageDialog(this, "Se modifico exitosamente");
+        jd_modificarproductoventana.dispose();    
+    }//GEN-LAST:event_jb_modfinalproductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -930,6 +1091,9 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -940,6 +1104,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jb_agregarproductoxfarmacia;
     private javax.swing.JButton jb_agregarproductoxfarmacia1;
@@ -952,15 +1117,17 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JButton jb_crearpersona;
     private javax.swing.JButton jb_crearpersona1;
     private javax.swing.JButton jb_eliminar;
+    private javax.swing.JButton jb_modfinalproducto;
     private javax.swing.JButton jb_modificar;
     private javax.swing.JButton jb_modificarfarmacia;
     private javax.swing.JButton jb_modificarpersona;
+    private javax.swing.JButton jb_modificarproducto;
     private javax.swing.JButton jb_registrarfarmacia;
     private javax.swing.JButton jb_registrarfarmacia1;
     private javax.swing.JButton jb_registrarlaboratorio;
     private javax.swing.JButton jb_registrarpersona;
     private javax.swing.JComboBox<String> jcb_idPersona;
-    private javax.swing.JComboBox<String> jcb_modificaridfarmacia;
+    private javax.swing.JComboBox<String> jcb_idfarmacia;
     private javax.swing.JDialog jd_Modificar;
     private javax.swing.JDialog jd_ModificarFarmacias;
     private javax.swing.JDialog jd_ModificarPersonas;
@@ -969,7 +1136,10 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearlaboratorio;
     private javax.swing.JDialog jd_crearpersona;
     private javax.swing.JDialog jd_crearproducto;
+    private javax.swing.JDialog jd_modificarproducto;
+    private javax.swing.JDialog jd_modificarproductoventana;
     private javax.swing.JTable jt_personasxfarmacia;
+    private javax.swing.JTable jt_productos;
     private javax.swing.JTable jt_productosxfarmacia;
     private javax.swing.JTextField jtxt_direccion;
     private javax.swing.JTextField jtxt_idfarmacia;
@@ -984,5 +1154,8 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_nombrepersona;
     private javax.swing.JTextField jtxt_nombreproducto;
     private javax.swing.JTextField jtxt_tipoproducto;
+    private javax.swing.JTextField tf_modificaridproducto;
+    private javax.swing.JTextField tf_modificarnombreproducto;
+    private javax.swing.JTextField tf_modificartipoproducto;
     // End of variables declaration//GEN-END:variables
 }

@@ -142,7 +142,7 @@ public class PersonaConexion {
         cursor.close();
     }
     public void updatecb_farmacias (JComboBox farmacias){
-        farmacias.removeAllItems();
+            farmacias.removeAllItems();
         MongoClient mongoClient = MongoClients.create(
                 "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
@@ -154,8 +154,7 @@ public class PersonaConexion {
             ArrayList<String> list = new ArrayList();
             list.add((String) str.get("IdF"));
             farmacias.addItem(list.get(0).toString());
-            System.out.println(farmacias.getSelectedItem().toString());
-        }      
+        }
         cursor.close();
     }
     
@@ -264,6 +263,17 @@ public class PersonaConexion {
         try {
             MongoCollection<org.bson.Document> collection = database.getCollection("Farmacia");
             collection.deleteOne(viejo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+       public void reemplazarFarmacia(Document viejo, Document nuevo) {
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Farmacia");
+            collection.replaceOne(viejo, nuevo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -438,5 +448,15 @@ public class PersonaConexion {
             e.printStackTrace();
         }
     }
-
+   public void reemplazarProducto(Document viejo, Document nuevo) {
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Producto");
+            collection.replaceOne(viejo, nuevo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

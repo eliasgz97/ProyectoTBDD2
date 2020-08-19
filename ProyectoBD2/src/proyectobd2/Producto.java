@@ -66,7 +66,7 @@ public class Producto {
 
     public Document toDocumentName() {
         Document d = new Document();
-        d.append("IdP", this.id);
+        d.append("IdProducto", this.id);
         return d;
     }
 }
