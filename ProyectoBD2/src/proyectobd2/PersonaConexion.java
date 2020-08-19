@@ -141,6 +141,23 @@ public class PersonaConexion {
         }
         cursor.close();
     }
+    public void updatecb_farmacias (JComboBox farmacias){
+        farmacias.removeAllItems();
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        MongoCollection collection = database.getCollection("Farmacia");
+        
+        MongoCursor<Document> cursor = collection.find().iterator();
+        while (cursor.hasNext()) {
+            Document str = cursor.next();
+            ArrayList<String> list = new ArrayList();
+            list.add((String) str.get("IdF"));
+            farmacias.addItem(list.get(0).toString());
+            System.out.println(farmacias.getSelectedItem().toString());
+        }      
+        cursor.close();
+    }
     
     public void reemplazarPersona(Document viejo, Document nuevo) {
         MongoClient mongoClient = MongoClients.create(
