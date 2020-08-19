@@ -15,6 +15,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
@@ -124,6 +125,23 @@ public class PersonaConexion {
         return r;
     }
 
+    public void updatecb_personas(JComboBox personas) {
+        personas.removeAllItems();
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        MongoCollection collection = database.getCollection("Persona");
+        
+        MongoCursor<Document> cursor = collection.find().iterator();
+        while (cursor.hasNext()) {
+            Document str = cursor.next();
+            ArrayList<String> list = new ArrayList();
+            list.add((String) str.get("IdP"));
+            personas.addItem(list.get(0).toString());
+        }
+        cursor.close();
+    }
+    
     public void reemplazarPersona(Document viejo, Document nuevo) {
         MongoClient mongoClient = MongoClients.create(
                 "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
@@ -135,6 +153,7 @@ public class PersonaConexion {
             e.printStackTrace();
         }
     }
+
 
     public void eliminarPersona(Document viejo) {
         MongoClient mongoClient = MongoClients.create(

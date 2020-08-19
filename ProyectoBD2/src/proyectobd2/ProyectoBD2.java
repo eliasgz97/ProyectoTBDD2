@@ -9,6 +9,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import org.bson.Document;
 
 /**
  *
@@ -82,6 +84,15 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jb_registrarfarmacia1 = new javax.swing.JButton();
+        jd_ModificarPersonas = new javax.swing.JDialog();
+        jcb_idPersona = new javax.swing.JComboBox<>();
+        jtxt_modificarnombrePersona = new javax.swing.JTextField();
+        jb_modificarpersona = new javax.swing.JButton();
+        jd_Modificar = new javax.swing.JDialog();
+        jb_crearpersona1 = new javax.swing.JButton();
+        jb_crearlab1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jb_crearfarmacia1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jb_crear = new javax.swing.JButton();
         jb_modificar = new javax.swing.JButton();
@@ -461,6 +472,103 @@ public class ProyectoBD2 extends javax.swing.JFrame {
                     .addContainerGap(100, Short.MAX_VALUE)))
         );
 
+        jcb_idPersona.setModel(new DefaultComboBoxModel());
+        jcb_idPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_idPersonaActionPerformed(evt);
+            }
+        });
+
+        jb_modificarpersona.setText("Modificar");
+        jb_modificarpersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_modificarpersonaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_ModificarPersonasLayout = new javax.swing.GroupLayout(jd_ModificarPersonas.getContentPane());
+        jd_ModificarPersonas.getContentPane().setLayout(jd_ModificarPersonasLayout);
+        jd_ModificarPersonasLayout.setHorizontalGroup(
+            jd_ModificarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ModificarPersonasLayout.createSequentialGroup()
+                .addGroup(jd_ModificarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_ModificarPersonasLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(jd_ModificarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jcb_idPersona, 0, 164, Short.MAX_VALUE)
+                            .addComponent(jtxt_modificarnombrePersona)))
+                    .addGroup(jd_ModificarPersonasLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jb_modificarpersona, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+        jd_ModificarPersonasLayout.setVerticalGroup(
+            jd_ModificarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ModificarPersonasLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jcb_idPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jtxt_modificarnombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addComponent(jb_modificarpersona)
+                .addGap(108, 108, 108))
+        );
+
+        jb_crearpersona1.setText("Persona");
+        jb_crearpersona1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crearpersona1ActionPerformed(evt);
+            }
+        });
+
+        jb_crearlab1.setText("Laboratorio");
+        jb_crearlab1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crearlab1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Producto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jb_crearfarmacia1.setText("Farmacia");
+        jb_crearfarmacia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crearfarmacia1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_ModificarLayout = new javax.swing.GroupLayout(jd_Modificar.getContentPane());
+        jd_Modificar.getContentPane().setLayout(jd_ModificarLayout);
+        jd_ModificarLayout.setHorizontalGroup(
+            jd_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ModificarLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addGroup(jd_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jb_crearlab1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_crearfarmacia1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_crearpersona1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
+        );
+        jd_ModificarLayout.setVerticalGroup(
+            jd_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ModificarLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jb_crearfarmacia1)
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
+                .addGap(38, 38, 38)
+                .addComponent(jb_crearlab1)
+                .addGap(35, 35, 35)
+                .addComponent(jb_crearpersona1)
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jb_crear.setText("Crear");
@@ -471,6 +579,11 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         });
 
         jb_modificar.setText("Modificar");
+        jb_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_modificarActionPerformed(evt);
+            }
+        });
 
         jb_eliminar.setText("Eliminar");
 
@@ -622,6 +735,45 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         propietarios.add(persona);
     }//GEN-LAST:event_jb_agregarproductoxfarmacia2ActionPerformed
 
+    private void jcb_idPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_idPersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcb_idPersonaActionPerformed
+
+    private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
+        // TODO add your handling code here:
+        jd_Modificar.pack();
+        jd_Modificar.setModal(true);
+        jd_Modificar.setLocationRelativeTo(this);
+        jd_Modificar.setVisible(true);
+    }//GEN-LAST:event_jb_modificarActionPerformed
+
+    private void jb_crearpersona1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearpersona1ActionPerformed
+        personaconexion.updatecb_personas(jcb_idPersona);
+        jd_ModificarPersonas.pack();
+        jd_ModificarPersonas.setModal(true);
+        jd_ModificarPersonas.setLocationRelativeTo(this);
+        jd_ModificarPersonas.setVisible(true);
+     
+    }//GEN-LAST:event_jb_crearpersona1ActionPerformed
+
+    private void jb_crearlab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearlab1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_crearlab1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jb_crearfarmacia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearfarmacia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_crearfarmacia1ActionPerformed
+
+    private void jb_modificarpersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarpersonaActionPerformed
+        Document d = new Document();
+        d = personaconexion.obtenerPersona(new Persona(jcb_idPersona.getSelectedItem().toString(), jtxt_modificarnombrePersona.getText()));
+        personaconexion.reemplazarPersona(d, d);
+    }//GEN-LAST:event_jb_modificarpersonaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -666,6 +818,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -684,14 +837,21 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JButton jb_agregarproductoxfarmacia2;
     private javax.swing.JButton jb_crear;
     private javax.swing.JButton jb_crearfarmacia;
+    private javax.swing.JButton jb_crearfarmacia1;
     private javax.swing.JButton jb_crearlab;
+    private javax.swing.JButton jb_crearlab1;
     private javax.swing.JButton jb_crearpersona;
+    private javax.swing.JButton jb_crearpersona1;
     private javax.swing.JButton jb_eliminar;
     private javax.swing.JButton jb_modificar;
+    private javax.swing.JButton jb_modificarpersona;
     private javax.swing.JButton jb_registrarfarmacia;
     private javax.swing.JButton jb_registrarfarmacia1;
     private javax.swing.JButton jb_registrarlaboratorio;
     private javax.swing.JButton jb_registrarpersona;
+    private javax.swing.JComboBox<String> jcb_idPersona;
+    private javax.swing.JDialog jd_Modificar;
+    private javax.swing.JDialog jd_ModificarPersonas;
     private javax.swing.JDialog jd_crear;
     private javax.swing.JDialog jd_crearfarmacia;
     private javax.swing.JDialog jd_crearlaboratorio;
@@ -704,6 +864,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_idlaboratorio;
     private javax.swing.JTextField jtxt_idpersona;
     private javax.swing.JTextField jtxt_idproducto;
+    private javax.swing.JTextField jtxt_modificarnombrePersona;
     private javax.swing.JTextField jtxt_nombrefarmacia;
     private javax.swing.JTextField jtxt_nombrelaboratorio;
     private javax.swing.JTextField jtxt_nombrepersona;
