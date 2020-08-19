@@ -5,6 +5,7 @@
  */
 package proyectobd2;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
@@ -20,7 +21,6 @@ import org.bson.Document;
  */
 public class ProyectoBD2 extends javax.swing.JFrame {
 
-    
     PersonaConexion personaconexion = new PersonaConexion();
     Persona persona;
     Farmacia farmacia;
@@ -30,7 +30,10 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     ArrayList<Persona> farmaceuticos = new ArrayList();
     ArrayList<Persona> propietarios = new ArrayList();
     Document consulta;
-    
+    MongoClient mongoClient = MongoClients.create(
+            "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+    MongoDatabase database = mongoClient.getDatabase("test");
+
     /**
      * Creates new form ProyectoBD2
      */
@@ -80,6 +83,9 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jb_registrarlaboratorio = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_productosxlaboratorio = new javax.swing.JTable();
+        jb_agregarproductoxfarmacia3 = new javax.swing.JButton();
         jd_crearproducto = new javax.swing.JDialog();
         jtxt_idproducto = new javax.swing.JTextField();
         jtxt_nombreproducto = new javax.swing.JTextField();
@@ -117,6 +123,14 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jb_modfinalproducto = new javax.swing.JButton();
+        jd_modificarLab = new javax.swing.JDialog();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jtxtmodifcarnombrelaboratorio = new javax.swing.JTextField();
+        jcb_modificarlaboratorio = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jDialog2 = new javax.swing.JDialog();
+        jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jb_crear = new javax.swing.JButton();
         jb_modificar = new javax.swing.JButton();
@@ -393,14 +407,30 @@ public class ProyectoBD2 extends javax.swing.JFrame {
             }
         });
 
+        jt_productosxlaboratorio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id", "IdProducto", "NombreProducto", "Tipo"
+            }
+        ));
+        jScrollPane3.setViewportView(jt_productosxlaboratorio);
+
+        jb_agregarproductoxfarmacia3.setText("Agregar");
+        jb_agregarproductoxfarmacia3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarproductoxfarmacia3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_crearlaboratorioLayout = new javax.swing.GroupLayout(jd_crearlaboratorio.getContentPane());
         jd_crearlaboratorio.getContentPane().setLayout(jd_crearlaboratorioLayout);
         jd_crearlaboratorioLayout.setHorizontalGroup(
             jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jb_registrarlaboratorio)
+                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
                         .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -408,24 +438,44 @@ public class ProyectoBD2 extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jtxt_nombrelaboratorio)
-                            .addComponent(jtxt_idlaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                            .addComponent(jtxt_idlaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jb_registrarlaboratorio)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearlaboratorioLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearlaboratorioLayout.createSequentialGroup()
+                        .addComponent(jb_agregarproductoxfarmacia3)
+                        .addGap(220, 220, 220))))
         );
         jd_crearlaboratorioLayout.setVerticalGroup(
             jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
-                        .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtxt_idlaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(33, 33, 33)
-                        .addComponent(jtxt_nombrelaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(jb_registrarlaboratorio)
-                .addGap(21, 21, 21))
+                        .addGap(16, 16, 16)
+                        .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
+                                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jtxt_idlaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addGap(33, 33, 33)
+                                .addComponent(jtxt_nombrelaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jd_crearlaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jb_registrarlaboratorio))
+                    .addGroup(jd_crearlaboratorioLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_agregarproductoxfarmacia3)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         jtxt_idproducto.addActionListener(new java.awt.event.ActionListener() {
@@ -640,7 +690,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addGap(18, 18, 18)
                                 .addComponent(jcb_idfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jd_ModificarFarmaciasLayout.setVerticalGroup(
             jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -657,7 +707,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
                 .addGroup(jd_ModificarFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxt_modificardireccionfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jb_modificarfarmacia)
                 .addGap(71, 71, 71))
         );
@@ -758,6 +808,68 @@ public class ProyectoBD2 extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
+        jLabel18.setText("IdLaboratorio");
+
+        jLabel19.setText("Nombre Laboratorio");
+
+        jcb_modificarlaboratorio.setModel(new DefaultComboBoxModel());
+
+        jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_modificarLabLayout = new javax.swing.GroupLayout(jd_modificarLab.getContentPane());
+        jd_modificarLab.getContentPane().setLayout(jd_modificarLabLayout);
+        jd_modificarLabLayout.setHorizontalGroup(
+            jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLabLayout.createSequentialGroup()
+                .addGroup(jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_modificarLabLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxtmodifcarnombrelaboratorio)
+                            .addComponent(jcb_modificarlaboratorio, 0, 110, Short.MAX_VALUE)))
+                    .addGroup(jd_modificarLabLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jButton3)))
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+        jd_modificarLabLayout.setVerticalGroup(
+            jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLabLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jcb_modificarlaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_modificarLabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jtxtmodifcarnombrelaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(jButton3)
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jLabel17.setText("jLabel17");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jb_crear.setText("Crear");
@@ -825,6 +937,9 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private void jb_crearfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearfarmaciaActionPerformed
         personaconexion.obtenerProductos(jt_productosxfarmacia);
         personaconexion.obtenerPersonas(jt_personasxfarmacia);
+        productos = new ArrayList();
+        farmaceuticos = new ArrayList();
+        propietarios = new ArrayList();
         jd_crearfarmacia.pack();
         jd_crearfarmacia.setModal(true);
         jd_crearfarmacia.setLocationRelativeTo(this);
@@ -839,10 +954,13 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearpersonaActionPerformed
 
     private void jb_crearlabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearlabActionPerformed
+        personaconexion.obtenerProductos(jt_productosxlaboratorio);
+        productos = new ArrayList();
         jd_crearlaboratorio.pack();
         jd_crearlaboratorio.setModal(true);
         jd_crearlaboratorio.setLocationRelativeTo(this);
         jd_crearlaboratorio.setVisible(true);
+
     }//GEN-LAST:event_jb_crearlabActionPerformed
 
     private void jtxt_idpersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_idpersonaActionPerformed
@@ -880,10 +998,12 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private void jb_registrarlaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_registrarlaboratorioActionPerformed
         laboratorio = new Laboratorio(jtxt_idlaboratorio.getText(), jtxt_nombrelaboratorio.getText());
         personaconexion = new PersonaConexion(laboratorio);
+        laboratorio.setProductos(productos);
         personaconexion.crearLaboratorio();
     }//GEN-LAST:event_jb_registrarlaboratorioActionPerformed
 
     private void jb_agregarproductoxfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarproductoxfarmaciaActionPerformed
+
         producto = new Producto((String) jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 1), (String) jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 2), (String) jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 3));
         productos.add(producto);
         for (int i = 0; i < productos.size(); i++) {
@@ -945,7 +1065,11 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearpersona1ActionPerformed
 
     private void jb_crearlab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearlab1ActionPerformed
-        // TODO add your handling code here:
+        personaconexion.updatecb_laboratorios(jcb_modificarlaboratorio);
+        jd_modificarLab.pack();
+        jd_modificarLab.setModal(true);
+        jd_modificarLab.setLocationRelativeTo(this);
+        jd_modificarLab.setVisible(true);
     }//GEN-LAST:event_jb_crearlab1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -954,7 +1078,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jd_modificarproducto.setModal(true);
         jd_modificarproducto.setLocationRelativeTo(this);
         jd_modificarproducto.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jb_crearfarmacia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearfarmacia1ActionPerformed
@@ -982,16 +1106,29 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_modificarnombrefarmaciaActionPerformed
 
     private void jb_modificarfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarfarmaciaActionPerformed
-        Document d = new Document();
+        /*Document d = new Document();
         d = personaconexion.obtenerFarmacia(new Farmacia(jcb_idfarmacia.getSelectedItem().toString(), " "," "));
         Farmacia nuevo = new Farmacia (jcb_idfarmacia.getSelectedItem().toString(), jtxt_modificarnombrefarmacia.getText(),jtxt_modificardireccionfarmacia.getText());
         Document d2 = nuevo.toDocument();    
         personaconexion.reemplazarFarmacia(d, d2);
-        
+         */
+        BasicDBObject newDocument = new BasicDBObject().append("$set",
+                new BasicDBObject().append("NombreF", "" + jtxt_modificarnombrefarmacia.getText() + ""));
+        database.getCollection("Farmacia").updateOne(new BasicDBObject().append("IdF", jcb_idfarmacia.getSelectedItem().toString()), newDocument);
+        newDocument = new BasicDBObject().append("$set",
+                new BasicDBObject().append("Direccion", "" + jtxt_modificardireccionfarmacia.getText() + ""));
+        database.getCollection("Farmacia").updateOne(new BasicDBObject().append("IdF", jcb_idfarmacia.getSelectedItem().toString()), newDocument);
+        /*BasicDBObject newDocument = new BasicDBObject().append("$set",
+                new BasicDBObject().append("ID Laboratorio", "" + id + ""));
+        database.getCollection("Laboratorio").updateOne(new BasicDBObject().append("ID Laboratorio", jt_laboratorios1.getValueAt(jt_laboratorios1.getSelectedRow(), 1).toString()), newDocument);
+        newDocument = new BasicDBObject().append("$set",
+                new BasicDBObject().append("Nombre", "" + nombrefar + ""));
+        database.getCollection("L");
+         */
     }//GEN-LAST:event_jb_modificarfarmaciaActionPerformed
 
     private void jb_modificarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarproductoActionPerformed
-       consulta=new Document();
+        consulta = new Document();
         if (jt_productos.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la tabla para poder modificar");
         } else {
@@ -1000,9 +1137,9 @@ public class ProyectoBD2 extends javax.swing.JFrame {
             Producto pr = new Producto(id);
             consulta = personaconexion.obtenerProducto(pr);
             ArrayList<String> empresita = new ArrayList();
-            String principal="";
+            String principal = "";
             String[] p;
-           principal = consulta.toString();
+            principal = consulta.toString();
             p = principal.split(",");
             for (int i = 0; i < p.length; i++) {
                 String f[] = p[i].split("=");
@@ -1026,20 +1163,33 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_modificarproductoActionPerformed
 
     private void jb_modfinalproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modfinalproductoActionPerformed
-       String id, nombre,tipo;
+        String id, nombre, tipo;
         id = tf_modificaridproducto.getText();
         tf_modificaridproducto.setText("");
         nombre = tf_modificarnombreproducto.getText();
         tf_modificarnombreproducto.setText("");
         tipo = tf_modificartipoproducto.getText();
         tf_modificartipoproducto.setText("");
-        Producto pr = new Producto(id,nombre,tipo);
+        Producto pr = new Producto(id, nombre, tipo);
         PersonaConexion pc = new PersonaConexion();
         pc.reemplazarProducto(consulta, pr.toDocument());
         pc.obtenerProductos(jt_productos);
         JOptionPane.showMessageDialog(this, "Se modifico exitosamente");
-        jd_modificarproductoventana.dispose();    
+        jd_modificarproductoventana.dispose();
     }//GEN-LAST:event_jb_modfinalproductoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Document d = new Document();
+        d = personaconexion.obtenerLaboratorio(new Laboratorio(jcb_modificarlaboratorio.getSelectedItem().toString(), " "));
+        Laboratorio nuevo = new Laboratorio(jcb_modificarlaboratorio.getSelectedItem().toString(), jtxtmodifcarnombrelaboratorio.getText());
+        Document d2 = nuevo.toDocument();
+        personaconexion.reemplazarLaboratorio(d, d2);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jb_agregarproductoxfarmacia3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarproductoxfarmacia3ActionPerformed
+        producto = new Producto((String) jt_productosxlaboratorio.getValueAt(jt_productosxlaboratorio.getSelectedRow(), 1), (String) jt_productosxlaboratorio.getValueAt(jt_productosxlaboratorio.getSelectedRow(), 2), (String) jt_productosxlaboratorio.getValueAt(jt_productosxlaboratorio.getSelectedRow(), 3));
+        productos.add(producto);
+    }//GEN-LAST:event_jb_agregarproductoxfarmacia3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1086,6 +1236,8 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1094,6 +1246,9 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1105,10 +1260,12 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jb_agregarproductoxfarmacia;
     private javax.swing.JButton jb_agregarproductoxfarmacia1;
     private javax.swing.JButton jb_agregarproductoxfarmacia2;
+    private javax.swing.JButton jb_agregarproductoxfarmacia3;
     private javax.swing.JButton jb_crear;
     private javax.swing.JButton jb_crearfarmacia;
     private javax.swing.JButton jb_crearfarmacia1;
@@ -1128,6 +1285,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JButton jb_registrarpersona;
     private javax.swing.JComboBox<String> jcb_idPersona;
     private javax.swing.JComboBox<String> jcb_idfarmacia;
+    private javax.swing.JComboBox<String> jcb_modificarlaboratorio;
     private javax.swing.JDialog jd_Modificar;
     private javax.swing.JDialog jd_ModificarFarmacias;
     private javax.swing.JDialog jd_ModificarPersonas;
@@ -1136,11 +1294,13 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearlaboratorio;
     private javax.swing.JDialog jd_crearpersona;
     private javax.swing.JDialog jd_crearproducto;
+    private javax.swing.JDialog jd_modificarLab;
     private javax.swing.JDialog jd_modificarproducto;
     private javax.swing.JDialog jd_modificarproductoventana;
     private javax.swing.JTable jt_personasxfarmacia;
     private javax.swing.JTable jt_productos;
     private javax.swing.JTable jt_productosxfarmacia;
+    private javax.swing.JTable jt_productosxlaboratorio;
     private javax.swing.JTextField jtxt_direccion;
     private javax.swing.JTextField jtxt_idfarmacia;
     private javax.swing.JTextField jtxt_idlaboratorio;
@@ -1154,6 +1314,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_nombrepersona;
     private javax.swing.JTextField jtxt_nombreproducto;
     private javax.swing.JTextField jtxt_tipoproducto;
+    private javax.swing.JTextField jtxtmodifcarnombrelaboratorio;
     private javax.swing.JTextField tf_modificaridproducto;
     private javax.swing.JTextField tf_modificarnombreproducto;
     private javax.swing.JTextField tf_modificartipoproducto;

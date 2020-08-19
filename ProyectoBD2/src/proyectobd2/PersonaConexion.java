@@ -141,6 +141,22 @@ public class PersonaConexion {
         }
         cursor.close();
     }
+        public void updatecb_laboratorios(JComboBox laboratorios) {
+        laboratorios.removeAllItems();
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        MongoCollection collection = database.getCollection("Laboratorio");
+        
+        MongoCursor<Document> cursor = collection.find().iterator();
+        while (cursor.hasNext()) {
+            Document str = cursor.next();
+            ArrayList<String> list = new ArrayList();
+            list.add((String) str.get("IdL"));
+            laboratorios.addItem(list.get(0).toString());
+        }
+        cursor.close();
+    }
     public void updatecb_farmacias (JComboBox farmacias){
             farmacias.removeAllItems();
         MongoClient mongoClient = MongoClients.create(
@@ -182,7 +198,7 @@ public class PersonaConexion {
             e.printStackTrace();
         }
     }
-
+    
     //---------------------------------------------------------INICIO METODOS DE FARMACIA----------------------------------------------------------------------
     public void crearFarmacia() {
         MongoClient mongoClient = MongoClients.create(
@@ -278,12 +294,23 @@ public class PersonaConexion {
             e.printStackTrace();
         }
     }
+    public void reemplazarLaboratorio(Document viejo, Document nuevo) {
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Laboratorio");
+            collection.replaceOne(viejo, nuevo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //-------------------------------------------------------INICIO METODOS DE LABORATORIO----------------------------------------------------------------
 
     public void crearLaboratorio() {
         MongoClient mongoClient = MongoClients.create(
                 "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
-        MongoDatabase database = mongoClient.getDatabase("test");
+        MongoDatabase database = mongoClient.getDatabase("test").withCodecRegistry(pojoCodecRegistry);
         try {
             MongoCollection<org.bson.Document> collection = database.getCollection("Laboratorio");
             collection.insertOne(laboratorio.toDocument());

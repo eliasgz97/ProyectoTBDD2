@@ -2,6 +2,7 @@
 package proyectobd2;
 
 
+import java.util.ArrayList;
 import org.bson.Document;
 
 /**
@@ -12,6 +13,15 @@ public class Laboratorio {
 
     String id;
     String nombre;
+    ArrayList <Producto> productos = new ArrayList();
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
 
     public Laboratorio(String id) {
         this.id = id;
@@ -42,8 +52,8 @@ public class Laboratorio {
     public Document toDocument() {
         Document d = new Document();
         d.append("IdL", this.id)
-                .append("NombreL", this.nombre);
-
+                .append("NombreL", this.nombre)
+                    .append("Productos", this.productos);
         return d;
     }
 
