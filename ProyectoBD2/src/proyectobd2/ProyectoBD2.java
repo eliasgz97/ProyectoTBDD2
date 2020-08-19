@@ -16,18 +16,21 @@ import java.util.ArrayList;
  */
 public class ProyectoBD2 extends javax.swing.JFrame {
 
-    PersonaConexion personaconexion=new PersonaConexion();
+    PersonaConexion personaconexion = new PersonaConexion();
     Persona persona;
     Farmacia farmacia;
     Laboratorio laboratorio;
     Producto producto;
-    ArrayList<Producto> productos;
+    ArrayList<Producto> productos = new ArrayList();
+    ArrayList<Persona> farmaceuticos = new ArrayList();
+    ArrayList<Persona> propietarios = new ArrayList();
+
     /**
      * Creates new form ProyectoBD2
      */
     public ProyectoBD2() {
         initComponents();
-        
+
     }
 
     /**
@@ -43,6 +46,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jb_crearpersona = new javax.swing.JButton();
         jb_crearfarmacia = new javax.swing.JButton();
         jb_crearlab = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jd_crearpersona = new javax.swing.JDialog();
         jtxt_idpersona = new javax.swing.JTextField();
         jtxt_nombrepersona = new javax.swing.JTextField();
@@ -60,6 +64,10 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_productosxfarmacia = new javax.swing.JTable();
         jb_agregarproductoxfarmacia = new javax.swing.JButton();
+        jb_agregarproductoxfarmacia1 = new javax.swing.JButton();
+        jb_agregarproductoxfarmacia2 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_personasxfarmacia = new javax.swing.JTable();
         jd_crearlaboratorio = new javax.swing.JDialog();
         jtxt_nombrelaboratorio = new javax.swing.JTextField();
         jtxt_idlaboratorio = new javax.swing.JTextField();
@@ -100,6 +108,13 @@ public class ProyectoBD2 extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_crearLayout = new javax.swing.GroupLayout(jd_crear.getContentPane());
         jd_crear.getContentPane().setLayout(jd_crearLayout);
         jd_crearLayout.setHorizontalGroup(
@@ -109,7 +124,8 @@ public class ProyectoBD2 extends javax.swing.JFrame {
                 .addGroup(jd_crearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jb_crearlab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_crearfarmacia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_crearpersona, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jb_crearpersona, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         jd_crearLayout.setVerticalGroup(
@@ -117,11 +133,13 @@ public class ProyectoBD2 extends javax.swing.JFrame {
             .addGroup(jd_crearLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jb_crearfarmacia)
-                .addGap(70, 70, 70)
+                .addGap(27, 27, 27)
+                .addComponent(jButton1)
+                .addGap(38, 38, 38)
                 .addComponent(jb_crearlab)
-                .addGap(70, 70, 70)
+                .addGap(35, 35, 35)
                 .addComponent(jb_crearpersona)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jtxt_idpersona.addActionListener(new java.awt.event.ActionListener() {
@@ -218,57 +236,108 @@ public class ProyectoBD2 extends javax.swing.JFrame {
             }
         });
 
+        jb_agregarproductoxfarmacia1.setText("Agregar como Farmaceutico");
+        jb_agregarproductoxfarmacia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarproductoxfarmacia1ActionPerformed(evt);
+            }
+        });
+
+        jb_agregarproductoxfarmacia2.setText("Agregar como Propietario");
+        jb_agregarproductoxfarmacia2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_agregarproductoxfarmacia2ActionPerformed(evt);
+            }
+        });
+
+        jt_personasxfarmacia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id", "IdP", "NombreP"
+            }
+        ));
+        jScrollPane4.setViewportView(jt_personasxfarmacia);
+
         javax.swing.GroupLayout jd_crearfarmaciaLayout = new javax.swing.GroupLayout(jd_crearfarmacia.getContentPane());
         jd_crearfarmacia.getContentPane().setLayout(jd_crearfarmaciaLayout);
         jd_crearfarmaciaLayout.setHorizontalGroup(
             jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
                 .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(32, 32, 32)
-                .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jtxt_direccion)
-                        .addComponent(jtxt_nombrefarmacia)
-                        .addComponent(jtxt_idfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jb_registrarfarmacia))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearfarmaciaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jb_agregarproductoxfarmacia)
-                .addGap(85, 85, 85))
+                    .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jtxt_direccion)
+                            .addComponent(jtxt_nombrefarmacia)
+                            .addComponent(jtxt_idfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearfarmaciaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_registrarfarmacia)
+                        .addGap(65, 65, 65)))
+                .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
+                        .addGap(0, 43, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jb_agregarproductoxfarmacia2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_agregarproductoxfarmacia1))
+                        .addGap(4, 4, 4))
+                    .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_agregarproductoxfarmacia)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jd_crearfarmaciaLayout.setVerticalGroup(
             jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jb_agregarproductoxfarmacia)
+                .addGap(148, 148, 148)
+                .addComponent(jb_agregarproductoxfarmacia1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_agregarproductoxfarmacia2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
                 .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap()
+                        .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jtxt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)))
                             .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
                                 .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtxt_idfarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3))
-                                .addGap(33, 33, 33)
-                                .addComponent(jtxt_nombrefarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))
-                        .addGap(34, 34, 34)
-                        .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtxt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(30, 30, 30)
-                        .addComponent(jb_registrarfarmacia))
+                                .addGap(86, 86, 86)
+                                .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jtxt_nombrefarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)))))
                     .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(52, 52, 52)
-                .addComponent(jb_agregarproductoxfarmacia)
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jd_crearfarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crearfarmaciaLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jb_registrarfarmacia))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearfarmaciaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))))
         );
 
         jtxt_idlaboratorio.addActionListener(new java.awt.event.ActionListener() {
@@ -453,11 +522,11 @@ public class ProyectoBD2 extends javax.swing.JFrame {
 
     private void jb_crearfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearfarmaciaActionPerformed
         personaconexion.obtenerProductos(jt_productosxfarmacia);
+        personaconexion.obtenerPersonas(jt_personasxfarmacia);
         jd_crearfarmacia.pack();
         jd_crearfarmacia.setModal(true);
         jd_crearfarmacia.setLocationRelativeTo(this);
         jd_crearfarmacia.setVisible(true);
-        
     }//GEN-LAST:event_jb_crearfarmaciaActionPerformed
 
     private void jb_crearpersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearpersonaActionPerformed
@@ -492,6 +561,8 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         farmacia = new Farmacia(jtxt_idfarmacia.getText(), jtxt_nombrefarmacia.getText(), jtxt_direccion.getText());
         personaconexion = new PersonaConexion(farmacia);
         farmacia.setProductos(productos);
+        farmacia.setFarmaceuticos(farmaceuticos);
+        farmacia.setPropietarios(propietarios);
         System.out.println(farmacia.getProductos().get(0).toString());
         personaconexion.crearFarmacia();
     }//GEN-LAST:event_jb_registrarfarmaciaActionPerformed
@@ -511,10 +582,8 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_registrarlaboratorioActionPerformed
 
     private void jb_agregarproductoxfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarproductoxfarmaciaActionPerformed
-        producto=new Producto((String)jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 1),(String)jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 2),(String)jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 3));
-        productos=new ArrayList();
+        producto = new Producto((String) jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 1), (String) jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 2), (String) jt_productosxfarmacia.getValueAt(jt_productosxfarmacia.getSelectedRow(), 3));
         productos.add(producto);
-        
         for (int i = 0; i < productos.size(); i++) {
             System.out.println(productos.get(i).toString());
         }
@@ -529,8 +598,29 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_tipoproductoActionPerformed
 
     private void jb_registrarfarmacia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_registrarfarmacia1ActionPerformed
-       
+        producto = new Producto(jtxt_idproducto.getText(), jtxt_nombreproducto.getText(), jtxt_tipoproducto.getText());
+        personaconexion = new PersonaConexion(producto);
+        personaconexion.crearProducto();
     }//GEN-LAST:event_jb_registrarfarmacia1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jd_crearproducto.pack();
+        jd_crearproducto.setModal(true);
+        jd_crearproducto.setLocationRelativeTo(this);
+        jd_crearproducto.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jb_agregarproductoxfarmacia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarproductoxfarmacia1ActionPerformed
+        persona = new Persona((String) jt_personasxfarmacia.getValueAt(jt_personasxfarmacia.getSelectedRow(), 1), 
+                (String) jt_personasxfarmacia.getValueAt(jt_personasxfarmacia.getSelectedRow(), 2));
+        farmaceuticos.add(persona);
+    }//GEN-LAST:event_jb_agregarproductoxfarmacia1ActionPerformed
+
+    private void jb_agregarproductoxfarmacia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarproductoxfarmacia2ActionPerformed
+        persona = new Persona((String) jt_personasxfarmacia.getValueAt(jt_personasxfarmacia.getSelectedRow(), 1), 
+                (String) jt_personasxfarmacia.getValueAt(jt_personasxfarmacia.getSelectedRow(), 2));
+        propietarios.add(persona);
+    }//GEN-LAST:event_jb_agregarproductoxfarmacia2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -575,6 +665,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -587,7 +678,10 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jb_agregarproductoxfarmacia;
+    private javax.swing.JButton jb_agregarproductoxfarmacia1;
+    private javax.swing.JButton jb_agregarproductoxfarmacia2;
     private javax.swing.JButton jb_crear;
     private javax.swing.JButton jb_crearfarmacia;
     private javax.swing.JButton jb_crearlab;
@@ -603,6 +697,7 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearlaboratorio;
     private javax.swing.JDialog jd_crearpersona;
     private javax.swing.JDialog jd_crearproducto;
+    private javax.swing.JTable jt_personasxfarmacia;
     private javax.swing.JTable jt_productosxfarmacia;
     private javax.swing.JTextField jtxt_direccion;
     private javax.swing.JTextField jtxt_idfarmacia;

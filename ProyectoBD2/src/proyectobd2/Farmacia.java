@@ -17,8 +17,9 @@ public class Farmacia {
     String id;
     String nombre;
     String direccion;
-    ArrayList<Producto> productos= new ArrayList();;
-
+    ArrayList<Producto> productos= new ArrayList();
+    ArrayList<Persona> farmaceuticos = new ArrayList();
+    ArrayList<Persona> propietarios = new ArrayList();
     public Farmacia(String id, String nombre, String direccion) {
         this.id = id;
         this.nombre = nombre;
@@ -26,6 +27,21 @@ public class Farmacia {
         
     }
 
+    public ArrayList<Persona> getFarmaceuticos() {
+        return farmaceuticos;
+    }
+
+    public void setFarmaceuticos(ArrayList<Persona> farmaceuticos) {
+        this.farmaceuticos = farmaceuticos;
+    }
+
+    public ArrayList<Persona> getPropietarios() {
+        return propietarios;
+    }
+
+    public void setPropietarios(ArrayList<Persona> propietarios) {
+        this.propietarios = propietarios;
+    }
     public Farmacia() {
         
     }
@@ -68,6 +84,7 @@ public class Farmacia {
     public void addProducto(Producto e){
         productos.add(e);
     }
+    
 
     @Override
     public String toString() {
@@ -81,7 +98,9 @@ public class Farmacia {
         d.append("NombreF", this.nombre)
                 .append("IdF", this.id)
                     .append("Direccion",this.direccion)
-                        .append("Productos",this.productos);
+                        .append("Productos",this.productos)
+                            .append("Farmaceuticos", this.farmaceuticos)
+                                .append("Propietarios", this.propietarios);
 
         return d;
     }

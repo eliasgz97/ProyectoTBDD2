@@ -57,8 +57,8 @@ public class Producto {
    
     public Document toDocument() {
         Document d = new Document();
-        d.append("IdP", this.id)
-                .append("NombreP", this.nombre)
+        d.append("IdProducto", this.id)
+                .append("NombreProducto", this.nombre)
                     .append("Tipo",this.tipo);
 
         return d;
