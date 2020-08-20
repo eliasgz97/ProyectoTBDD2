@@ -559,4 +559,34 @@ public class PersonaConexion {
         }
 
     }
+    public Document obtenerPedido(Pedido pedido) {
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        Document r = new Document();
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Pedido");
+            Document d = pedido.toDocumentName();
+            FindIterable<Document> result = collection.find(d);
+            r = result.first();
+            if (r == null) {
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return r;
+    }
+    public void eliminarPedido(Document viejo) {
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Pedido");
+            collection.deleteOne(viejo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

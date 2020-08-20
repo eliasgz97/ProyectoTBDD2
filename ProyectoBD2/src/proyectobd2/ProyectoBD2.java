@@ -1760,7 +1760,15 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jb_eliminarpedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarpedidosActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) jt_pedidos.getModel();
+        String pedidos = (String) modelo.getValueAt(jt_pedidos.getSelectedRow(), 7);
+        System.out.println("ID " + pedidos);
+        Pedido pl = new Pedido(pedidos);
+        consulta = new Document();
+        consulta = personaconexion.obtenerPedido(pl);
+        personaconexion.eliminarPedido(consulta);
+        JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente");
+        personaconexion.obtenerPedidos(jt_pedidos);
     }//GEN-LAST:event_jb_eliminarpedidosActionPerformed
 
     private void jb_agregarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarpedidoActionPerformed
