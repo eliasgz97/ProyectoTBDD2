@@ -32,6 +32,7 @@ public class PersonaConexion {
     Farmacia farmacia;
     Laboratorio laboratorio;
     Producto producto;
+    Pedido pedido;
     CodecRegistry pojoCodecRegistry = org.bson.codecs.configuration.CodecRegistries.fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), org.bson.codecs.configuration.CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build()));
     public PersonaConexion(Persona persona) {
         this.persona = persona;
@@ -53,6 +54,10 @@ public class PersonaConexion {
         this.producto = producto;
     }
 
+    public PersonaConexion(Pedido pedido) {
+        this.pedido = pedido;
+    }
+   
     public void crearPersona() {
         MongoClient mongoClient = MongoClients.create(
                 "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
@@ -157,8 +162,8 @@ public class PersonaConexion {
         }
         cursor.close();
     }
-    public void updatecb_farmacias (JComboBox farmacias){
-            farmacias.removeAllItems();
+            public void updatecb_farmacias(JComboBox personas,String atributo) {
+        personas.removeAllItems();
         MongoClient mongoClient = MongoClients.create(
                 "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
         MongoDatabase database = mongoClient.getDatabase("test");
@@ -168,7 +173,23 @@ public class PersonaConexion {
         while (cursor.hasNext()) {
             Document str = cursor.next();
             ArrayList<String> list = new ArrayList();
-            list.add((String) str.get("IdF"));
+            list.add((String) str.get(atributo));
+            personas.addItem(list.get(0).toString());
+        }
+        cursor.close();
+    }
+    public void updatecb_producto (JComboBox farmacias,String atributo){
+            farmacias.removeAllItems();
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        MongoCollection collection = database.getCollection("Producto");
+        
+        MongoCursor<Document> cursor = collection.find().iterator();
+        while (cursor.hasNext()) {
+            Document str = cursor.next();
+            ArrayList<String> list = new ArrayList();
+            list.add((String) str.get(atributo));
             farmacias.addItem(list.get(0).toString());
         }
         cursor.close();
@@ -486,5 +507,56 @@ public class PersonaConexion {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+//-----------------------------------PEDIDO--------------------------------------------------------
+   public void crearPedido() {
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test").withCodecRegistry(pojoCodecRegistry);
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Pedido");
+            collection.insertOne(pedido.toDocument());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+   public void obtenerPedidos(JTable tabla) {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setNumRows(0);
+        modelo.setNumRows(0);
+        ArrayList<String> pedidos = new ArrayList();
+        MongoClient mongoClient = MongoClients.create(
+                "mongodb+srv://JoseDanielRC:Daniel08@cluster0.nvrwy.mongodb.net/test?retryWrites=true&w=majority");
+        MongoDatabase database = mongoClient.getDatabase("test");
+        try {
+            MongoCollection<org.bson.Document> collection = database.getCollection("Pedido");
+            MongoCursor<org.bson.Document> cursor = collection.find().iterator();
+            while (cursor.hasNext()) {
+                String principal = "";
+                String[] p;
+                principal = cursor.next().toString();
+                p = principal.split(",");
+                for (int i = 0; i < p.length; i++) {
+                    String f[] = p[i].split("=");
+                    pedidos.add(f[1]);
+                }
+                Object[] row = new Object[pedidos.size()];
+                for (int i = 0; i < pedidos.size(); i++) {
+                    if (i == pedidos.size() - 1) {
+                        row[i] = (pedidos.get(i)).substring(0, pedidos.get(i).length() - 2);
+                    } else {
+                        row[i] = pedidos.get(i);
+                    }
+                }
+                pedidos.clear();
+                modelo.addRow(row);
+            }
+
+            tabla.setModel(modelo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

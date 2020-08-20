@@ -12,15 +12,17 @@ public class Producto {
     String id;
     String nombre;
     String tipo;
+    String precio;
 
     public Producto(String id) {
         this.id = id;
     }
 
-    public Producto(String id, String nombre,String tipo) {
+    public Producto(String id, String nombre,String tipo,String precio) {
         this.id = id;
         this.nombre = nombre;
         this.tipo= tipo;
+        this.precio= precio;
     }
 
     
@@ -59,7 +61,8 @@ public class Producto {
         Document d = new Document();
         d.append("IdProducto", this.id)
                 .append("NombreProducto", this.nombre)
-                    .append("Tipo",this.tipo);
+                    .append("Tipo",this.tipo)
+                    .append("Precio", this.precio);
 
         return d;
     }
