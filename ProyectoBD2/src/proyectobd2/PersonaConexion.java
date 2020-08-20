@@ -305,6 +305,7 @@ public class PersonaConexion {
             e.printStackTrace();
         }
     }
+    
     //-------------------------------------------------------INICIO METODOS DE LABORATORIO----------------------------------------------------------------
 
     public void crearLaboratorio() {

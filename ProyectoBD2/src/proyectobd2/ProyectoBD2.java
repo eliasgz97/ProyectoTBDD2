@@ -131,6 +131,27 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jDialog2 = new javax.swing.JDialog();
         jLabel17 = new javax.swing.JLabel();
+        jd_eliminar = new javax.swing.JDialog();
+        jb_eliminarpersona = new javax.swing.JButton();
+        jb_eliminarlaboratorio = new javax.swing.JButton();
+        jb_eliminarproducto = new javax.swing.JButton();
+        jb_eliminarfarmacia = new javax.swing.JButton();
+        jd_EliminarFarmacia = new javax.swing.JDialog();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jt_eliminarfarmacia = new javax.swing.JTable();
+        jbt_eliminarfarmacias = new javax.swing.JButton();
+        jd_EliminarProducto = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jt_eliminarproductos = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jd_EliminarLaboratorio = new javax.swing.JDialog();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jt_eliminarlaboratorios = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        jd_EliminarPersonas = new javax.swing.JDialog();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jt_eliminarpersonas = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jb_crear = new javax.swing.JButton();
         jb_modificar = new javax.swing.JButton();
@@ -870,6 +891,224 @@ public class ProyectoBD2 extends javax.swing.JFrame {
 
         jLabel17.setText("jLabel17");
 
+        jb_eliminarpersona.setText("Persona");
+        jb_eliminarpersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarpersonaActionPerformed(evt);
+            }
+        });
+
+        jb_eliminarlaboratorio.setText("Laboratorio");
+        jb_eliminarlaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarlaboratorioActionPerformed(evt);
+            }
+        });
+
+        jb_eliminarproducto.setText("Producto");
+        jb_eliminarproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarproductoActionPerformed(evt);
+            }
+        });
+
+        jb_eliminarfarmacia.setText("Farmacia");
+        jb_eliminarfarmacia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarfarmaciaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_eliminarLayout = new javax.swing.GroupLayout(jd_eliminar.getContentPane());
+        jd_eliminar.getContentPane().setLayout(jd_eliminarLayout);
+        jd_eliminarLayout.setHorizontalGroup(
+            jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addGroup(jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jb_eliminarlaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_eliminarfarmacia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_eliminarpersona, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_eliminarproducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
+        );
+        jd_eliminarLayout.setVerticalGroup(
+            jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eliminarLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jb_eliminarfarmacia)
+                .addGap(27, 27, 27)
+                .addComponent(jb_eliminarproducto)
+                .addGap(38, 38, 38)
+                .addComponent(jb_eliminarlaboratorio)
+                .addGap(35, 35, 35)
+                .addComponent(jb_eliminarpersona)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        jt_eliminarfarmacia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id_", "NombreF", "IdF", "Direccion"
+            }
+        ));
+        jScrollPane10.setViewportView(jt_eliminarfarmacia);
+
+        jbt_eliminarfarmacias.setText("Eliminar");
+        jbt_eliminarfarmacias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbt_eliminarfarmaciasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_EliminarFarmaciaLayout = new javax.swing.GroupLayout(jd_EliminarFarmacia.getContentPane());
+        jd_EliminarFarmacia.getContentPane().setLayout(jd_EliminarFarmaciaLayout);
+        jd_EliminarFarmaciaLayout.setHorizontalGroup(
+            jd_EliminarFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_EliminarFarmaciaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+            .addGroup(jd_EliminarFarmaciaLayout.createSequentialGroup()
+                .addGap(283, 283, 283)
+                .addComponent(jbt_eliminarfarmacias)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_EliminarFarmaciaLayout.setVerticalGroup(
+            jd_EliminarFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarFarmaciaLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(jbt_eliminarfarmacias)
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
+
+        jt_eliminarproductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id", "IdProducto", "NombreProducto", "Tipo"
+            }
+        ));
+        jScrollPane5.setViewportView(jt_eliminarproductos);
+
+        jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_EliminarProductoLayout = new javax.swing.GroupLayout(jd_EliminarProducto.getContentPane());
+        jd_EliminarProducto.getContentPane().setLayout(jd_EliminarProductoLayout);
+        jd_EliminarProductoLayout.setHorizontalGroup(
+            jd_EliminarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarProductoLayout.createSequentialGroup()
+                .addGroup(jd_EliminarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_EliminarProductoLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_EliminarProductoLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jButton4)))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jd_EliminarProductoLayout.setVerticalGroup(
+            jd_EliminarProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarProductoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jButton4)
+                .addContainerGap(147, Short.MAX_VALUE))
+        );
+
+        jt_eliminarlaboratorios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id", "IdL", "NombreL"
+            }
+        ));
+        jScrollPane8.setViewportView(jt_eliminarlaboratorios);
+
+        jButton5.setText("Eliminar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_EliminarLaboratorioLayout = new javax.swing.GroupLayout(jd_EliminarLaboratorio.getContentPane());
+        jd_EliminarLaboratorio.getContentPane().setLayout(jd_EliminarLaboratorioLayout);
+        jd_EliminarLaboratorioLayout.setHorizontalGroup(
+            jd_EliminarLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarLaboratorioLayout.createSequentialGroup()
+                .addGroup(jd_EliminarLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_EliminarLaboratorioLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_EliminarLaboratorioLayout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(jButton5)))
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        jd_EliminarLaboratorioLayout.setVerticalGroup(
+            jd_EliminarLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarLaboratorioLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(jButton5)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+
+        jt_eliminarpersonas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "_id", "IdP", "NombreP"
+            }
+        ));
+        jScrollPane6.setViewportView(jt_eliminarpersonas);
+
+        jButton6.setText("Eliminar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_EliminarPersonasLayout = new javax.swing.GroupLayout(jd_EliminarPersonas.getContentPane());
+        jd_EliminarPersonas.getContentPane().setLayout(jd_EliminarPersonasLayout);
+        jd_EliminarPersonasLayout.setHorizontalGroup(
+            jd_EliminarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarPersonasLayout.createSequentialGroup()
+                .addGroup(jd_EliminarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_EliminarPersonasLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_EliminarPersonasLayout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(jButton6)))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        jd_EliminarPersonasLayout.setVerticalGroup(
+            jd_EliminarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_EliminarPersonasLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(jButton6)
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jb_crear.setText("Crear");
@@ -887,6 +1126,11 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         });
 
         jb_eliminar.setText("Eliminar");
+        jb_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1191,6 +1435,95 @@ public class ProyectoBD2 extends javax.swing.JFrame {
         productos.add(producto);
     }//GEN-LAST:event_jb_agregarproductoxfarmacia3ActionPerformed
 
+    private void jb_eliminarpersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarpersonaActionPerformed
+        personaconexion.obtenerPersonas(jt_eliminarpersonas);
+        jd_EliminarPersonas.pack();
+        jd_EliminarPersonas.setModal(true);
+        jd_EliminarPersonas.setLocationRelativeTo(this);
+        jd_EliminarPersonas.setVisible(true);
+    }//GEN-LAST:event_jb_eliminarpersonaActionPerformed
+
+    private void jb_eliminarlaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarlaboratorioActionPerformed
+        personaconexion.obtenerLaboratorios(jt_eliminarlaboratorios);
+        jd_EliminarLaboratorio.pack();
+        jd_EliminarLaboratorio.setModal(true);
+        jd_EliminarLaboratorio.setLocationRelativeTo(this);
+        jd_EliminarLaboratorio.setVisible(true);
+    }//GEN-LAST:event_jb_eliminarlaboratorioActionPerformed
+
+    private void jb_eliminarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarproductoActionPerformed
+        personaconexion.obtenerProductos(jt_eliminarproductos);
+        jd_EliminarProducto.pack();
+        jd_EliminarProducto.setModal(true);
+        jd_EliminarProducto.setLocationRelativeTo(this);
+        jd_EliminarProducto.setVisible(true);
+    }//GEN-LAST:event_jb_eliminarproductoActionPerformed
+
+    private void jb_eliminarfarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarfarmaciaActionPerformed
+        personaconexion.obtenerFarmacia(jt_eliminarfarmacia);
+        jd_EliminarFarmacia.pack();
+        jd_EliminarFarmacia.setModal(true);
+        jd_EliminarFarmacia.setLocationRelativeTo(this);
+        jd_EliminarFarmacia.setVisible(true);
+
+    }//GEN-LAST:event_jb_eliminarfarmaciaActionPerformed
+
+    private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
+        jd_eliminar.pack();
+        jd_eliminar.setModal(true);
+        jd_eliminar.setLocationRelativeTo(this);
+        jd_eliminar.setVisible(true);
+
+    }//GEN-LAST:event_jb_eliminarActionPerformed
+
+    private void jbt_eliminarfarmaciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_eliminarfarmaciasActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_eliminarfarmacia.getModel();
+        String farmacia = (String) modelo.getValueAt(jt_eliminarfarmacia.getSelectedRow(), 2);
+        System.out.println("ID " + farmacia);
+        Farmacia pl = new Farmacia(farmacia);
+        consulta = new Document();
+        consulta = personaconexion.obtenerFarmacia(pl);
+        personaconexion.eliminarFarmacia(consulta);
+        JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente");
+        personaconexion.obtenerFarmacia(jt_eliminarfarmacia);
+    }//GEN-LAST:event_jbt_eliminarfarmaciasActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_eliminarproductos.getModel();
+        String producto = (String) modelo.getValueAt(jt_eliminarproductos.getSelectedRow(), 1);
+        System.out.println("ID " + producto);
+        Producto pl = new Producto(producto);
+        consulta = new Document();
+        consulta = personaconexion.obtenerProducto(pl);
+        personaconexion.eliminarProducto(consulta);
+        JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente");
+        personaconexion.obtenerProductos(jt_eliminarproductos);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_eliminarlaboratorios.getModel();
+        String laboratorio = (String) modelo.getValueAt(jt_eliminarlaboratorios.getSelectedRow(), 1);
+        System.out.println("ID " + laboratorio);
+        Laboratorio pl = new Laboratorio(laboratorio);
+        consulta = new Document();
+        consulta = personaconexion.obtenerLaboratorio(pl);
+        personaconexion.eliminarLaboratorio(consulta);
+        JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente");
+        personaconexion.obtenerLaboratorios(jt_eliminarlaboratorios);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_eliminarpersonas.getModel();
+        String personas = (String) modelo.getValueAt(jt_eliminarpersonas.getSelectedRow(), 1);
+        System.out.println("ID " + personas);
+        Persona pl = new Persona(personas);
+        consulta = new Document();
+        consulta = personaconexion.obtenerPersona(pl);
+        personaconexion.eliminarPersona(consulta);
+        JOptionPane.showMessageDialog(this, "Registro eliminado exitosamente");
+        personaconexion.obtenerPersonas(jt_eliminarpersonas);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1237,6 +1570,9 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1259,9 +1595,13 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JButton jb_agregarproductoxfarmacia;
     private javax.swing.JButton jb_agregarproductoxfarmacia1;
     private javax.swing.JButton jb_agregarproductoxfarmacia2;
@@ -1274,6 +1614,10 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JButton jb_crearpersona;
     private javax.swing.JButton jb_crearpersona1;
     private javax.swing.JButton jb_eliminar;
+    private javax.swing.JButton jb_eliminarfarmacia;
+    private javax.swing.JButton jb_eliminarlaboratorio;
+    private javax.swing.JButton jb_eliminarpersona;
+    private javax.swing.JButton jb_eliminarproducto;
     private javax.swing.JButton jb_modfinalproducto;
     private javax.swing.JButton jb_modificar;
     private javax.swing.JButton jb_modificarfarmacia;
@@ -1283,9 +1627,14 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JButton jb_registrarfarmacia1;
     private javax.swing.JButton jb_registrarlaboratorio;
     private javax.swing.JButton jb_registrarpersona;
+    private javax.swing.JButton jbt_eliminarfarmacias;
     private javax.swing.JComboBox<String> jcb_idPersona;
     private javax.swing.JComboBox<String> jcb_idfarmacia;
     private javax.swing.JComboBox<String> jcb_modificarlaboratorio;
+    private javax.swing.JDialog jd_EliminarFarmacia;
+    private javax.swing.JDialog jd_EliminarLaboratorio;
+    private javax.swing.JDialog jd_EliminarPersonas;
+    private javax.swing.JDialog jd_EliminarProducto;
     private javax.swing.JDialog jd_Modificar;
     private javax.swing.JDialog jd_ModificarFarmacias;
     private javax.swing.JDialog jd_ModificarPersonas;
@@ -1294,9 +1643,14 @@ public class ProyectoBD2 extends javax.swing.JFrame {
     private javax.swing.JDialog jd_crearlaboratorio;
     private javax.swing.JDialog jd_crearpersona;
     private javax.swing.JDialog jd_crearproducto;
+    private javax.swing.JDialog jd_eliminar;
     private javax.swing.JDialog jd_modificarLab;
     private javax.swing.JDialog jd_modificarproducto;
     private javax.swing.JDialog jd_modificarproductoventana;
+    private javax.swing.JTable jt_eliminarfarmacia;
+    private javax.swing.JTable jt_eliminarlaboratorios;
+    private javax.swing.JTable jt_eliminarpersonas;
+    private javax.swing.JTable jt_eliminarproductos;
     private javax.swing.JTable jt_personasxfarmacia;
     private javax.swing.JTable jt_productos;
     private javax.swing.JTable jt_productosxfarmacia;
